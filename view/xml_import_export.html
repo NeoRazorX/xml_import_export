@@ -28,12 +28,12 @@
 
 <div class="container-fluid" style="margin-top: 10px;">
    <div class="row" style="margin-bottom: 10px;">
-      <div class="col-md-1">
+      <div class="col-xs-2">
          <a class="btn btn-sm btn-default" href="{$fsc->url()}" title="Recargar la página">
             <span class="glyphicon glyphicon-refresh"></span>
          </a>
       </div>
-      <div class="col-md-11 text-right">
+      <div class="col-xs-10 text-right">
          <h3 style="margin-top: 0px;">Importar/exportar XML</h3>
       </div>
    </div>
@@ -68,8 +68,9 @@
                      </div>
                   </div>
                   <div class="panel-footer">
-                     <input class="btn btn-sm btn-primary" type="submit" value="Exportar">
-                     </input>
+                     <button class="btn btn-sm btn-primary" type="submit" onclick="this.disabled=true;this.form.submit();">
+                        <span class="glyphicon glyphicon-export"></span> &nbsp; Exportar
+                     </button>
                   </div>
                </div>
             </form>
@@ -82,7 +83,7 @@
                   <div class="container-fluid">
                      <div class="row">
                         {loop="$fsc->all_tables()"}
-                        <div class="col-md-4">
+                        <div class="col-sm-4">
                            <a target="_blank" href='{$fsc->page->url()}&table={$value.name}'>{$value.name}</a>
                         </div>
                         {/loop}
@@ -106,7 +107,9 @@
                      </div>
                   </div>
                   <div class="panel-footer">
-                     <input class="btn btn-sm btn-primary" type="submit" value="importar"/>
+                     <button class="btn btn-sm btn-primary" type="submit" onclick="this.disabled=true;this.form.submit();">
+                        <span class="glyphicon glyphicon-import"></span> &nbsp; Importar
+                     </button>
                   </div>
                </div>
             </form>

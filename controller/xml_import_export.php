@@ -1,7 +1,7 @@
 <?php
 /*
  * This file is part of FacturaSctipts
- * Copyright (C) 2014  Carlos Garcia Gomez  neorazorx@gmail.com
+ * Copyright (C) 2014-2015  Carlos Garcia Gomez  neorazorx@gmail.com
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -21,13 +21,11 @@ class xml_import_export extends fs_controller
 {
    public function __construct()
    {
-      parent::__construct('xml_import_export', 'Importar/exportar XML', 'admin', TRUE, TRUE);
+      parent::__construct('xml_import_export', 'Importar/exportar XML', 'admin');
    }
    
    protected function process()
    {
-      $this->show_fs_toolbar = FALSE;
-      
       if( isset($_GET['table']) )
       {
          $this->export_structure_xml($_GET['table']);
@@ -285,6 +283,15 @@ class xml_import_export extends fs_controller
                $aux = $this->archivo_xml->addChild('columna');
                $aux->addChild('nombre', $col['column_name']);
                
+               /// comprobamos si es clave primaria
+               if( isset($col['key']) )
+               {
+                  if($col['key'] == 'PRI')
+                  {
+                     $primary_key = $col['column_name'];
+                  }
+               }
+               
                /// comprobamos si es auto_increment
                $auto_increment = FALSE;
                if( isset($col['extra']) )
@@ -297,8 +304,6 @@ class xml_import_export extends fs_controller
                
                if($auto_increment)
                {
-                  $primary_key = $col['column_name'];
-                  
                   $aux->addChild('tipo', 'serial');
                   
                   if( $col['is_nullable'] == 'YES')
