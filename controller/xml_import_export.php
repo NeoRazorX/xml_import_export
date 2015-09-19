@@ -24,7 +24,7 @@ class xml_import_export extends fs_controller
       parent::__construct('xml_import_export', 'Importar/exportar XML', 'admin');
    }
    
-   protected function process()
+   protected function private_core()
    {
       if( isset($_GET['table']) )
       {
