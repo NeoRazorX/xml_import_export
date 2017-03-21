@@ -5,4 +5,4 @@ instalaciones de FacturaScripts.
 
 **Atención**: Este plugin está orientado a programadores.
 
-https://www.facturascripts.com
+https://www.facturascripts.com/plugin/xml_import_export
