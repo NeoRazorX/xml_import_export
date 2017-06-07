@@ -325,7 +325,7 @@ class xml_import_export extends fs_controller {
       }
 
       header("content-type: application/xml; charset=UTF-8");
-      //header('Content-Disposition: attachment; filename="' . $table . '.xml"');
+      header('Content-Disposition: attachment; filename="' . $table . '.xml"');
       echo $this->archivo_xml->asXML();
    }
    
