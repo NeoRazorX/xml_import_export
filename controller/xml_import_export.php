@@ -130,7 +130,7 @@ class xml_import_export extends fs_controller {
                   /// pero sólo queremos las columnas comunes con la tabla de la base de datos
                   foreach ($this->db->get_columns($tabla) as $col1) {
                      foreach ($xml->columnas->columna as $col2) {
-                        if ($col1['column_name'] == $col2) {
+                        if ($col1['name'] == $col2) {
                            $columnas[] = $col2;
                            break;
                         }
